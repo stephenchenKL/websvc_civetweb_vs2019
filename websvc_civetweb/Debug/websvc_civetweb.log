@@ -1,0 +1,8 @@
+﻿  cJSON.c
+  cJSON_Utils.c
+  Generating Code...
+  main.cpp
+  webserver.cpp
+  Generating Code...
+     Creating library C:\codes\websvc_civetweb\Debug\websvc_civetweb.lib and object C:\codes\websvc_civetweb\Debug\websvc_civetweb.exp
+  websvc_civetweb.vcxproj -> C:\codes\websvc_civetweb\Debug\websvc_civetweb.exe
