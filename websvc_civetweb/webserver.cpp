@@ -7,6 +7,25 @@ std::string str_info("info");
 std::string str_MC("MC");
 std::string str_XYZ("XYZ");
 
+std::string str_scan("scan");
+std::string str_stop("stop");
+std::string str_snap("snap");
+std::string str_saveRef("saveRef");
+std::string str_saveDark("saveDark");
+std::string str_autoGain("autoGain");
+std::string str_lampOn("lampOn");
+std::string str_lampOff("lampOff");
+std::string str_park("park");
+std::string str_homeXYZ("homeXYZ");
+std::string str_eject("eject");
+std::string str_pickSensor("pickSensor");
+std::string str_sample("sample");
+std::string str_shakerOn("shakerOn");
+std::string str_shakerOff("shakerOff");
+std::string str_shaker("shaker_");
+std::string str_setSampleTemp("setSampleTemp");
+std::string str_setSpectTemp("setSpectTemp");
+
 
 static int
 SendJSON(struct mg_connection* conn, cJSON* json_obj)
@@ -126,10 +145,29 @@ bool ExperimentHandler::handlePut(CivetServer* server, struct mg_connection* con
             std::cout << "para is: " << para << std::endl;
             std::string val = query.erase(0, pos + delimiter.length());
             std::cout << "val is: " << val << std::endl;
+
+            if (0 == str_info.compare(para)) { // get info request
+                if (0 == str_scan.compare(val)) {
+                    std::cout << "Start to scan" << std::endl;
+                    // mqtt: forward cmd to blidatasvc
+                    //mqtt.publish("command", val);
+                }
+                else if (0 == str_stop.compare(val)) {
+                    std::cout << "Start to scan" << std::endl;
+                    // mqtt: forward cmd to blidatasvc
+                    //mqtt.publish("command", val);
+                }
+                else if (0 == str_lampOn.compare(val)) {
+                    std::cout << "Lamp on" << std::endl;
+                    // GRPC turn on lamp
+                }
+                else if (0 == str_lampOff.compare(val)) {
+                    std::cout << "Lamp off" << std::endl;
+                    // GRPC turn off lamp
+                }
+            }
+
         }
-
-
-
     }
 
     cJSON_AddNumberToObject(obj_return, "exp_status", 0);
