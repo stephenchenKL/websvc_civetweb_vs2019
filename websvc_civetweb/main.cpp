@@ -6,6 +6,7 @@
 #include "webserver.h"
 
 
+
 #define NO_SSL
 
 
@@ -23,9 +24,17 @@
 #define METHOD_FILES_URI "/api/method-files"
 
 
+
+
+
 int main()
 {
 	std::cout << "websvc\n";
+
+	// Show info
+	std::cout << "Experiment Control: " << HOST_INFO << EXPERIMENT_URI << std::endl;
+	std::cout << "Method Files: " << HOST_INFO << METHOD_FILES_URI << std::endl;
+	std::cout << "Exit Experiment Service: " << HOST_INFO << EXIT_URI << std::endl;
 
 	mg_init_library(0);
 
@@ -41,6 +50,8 @@ int main()
 
 	ExperimentHandler h_experiment;
 	server.addHandler(EXPERIMENT_URI, h_experiment);
+
+
 
 
 	/* Wait until the server should be closed */
